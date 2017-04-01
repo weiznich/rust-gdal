@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Feature` struct in crate `gdal`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Feature">
+
+    <title>gdal::vector::Feature - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>gdal</a>::<wbr><a href='index.html'>vector</a></p><script>window.sidebarCurrent = {name: 'Feature', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>gdal</a>::<wbr><a href='index.html'>vector</a>::<wbr><a class="struct" href=''>Feature</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/gdal/vector/feature.rs.html#14-18' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Feature&lt;'a&gt; { /* fields omitted */ }</pre><div class='docblock'><p>OGR Feature</p></div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="struct" href="../../gdal/vector/struct.Feature.html" title="struct gdal::vector::Feature">Feature</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/gdal/vector/feature.rs.html#21-134' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(defn: &amp;'a <a class="struct" href="../../gdal/vector/struct.Defn.html" title="struct gdal::vector::Defn">Defn</a>) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="struct" href="../../gdal/vector/struct.Feature.html" title="struct gdal::vector::Feature">Feature</a>&gt;</code></span></h4>
+<h4 id='method._with_c_feature' class="method"><span id='_with_c_feature.v' class='invisible'><code>unsafe fn <a href='#method._with_c_feature' class='fnname'>_with_c_feature</a>(defn: &amp;'a <a class="struct" href="../../gdal/vector/struct.Defn.html" title="struct gdal::vector::Defn">Defn</a>, c_feature: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*const </a><a class="enum" href="../../libc/enum.c_void.html" title="enum libc::c_void">c_void</a>) -&gt; <a class="struct" href="../../gdal/vector/struct.Feature.html" title="struct gdal::vector::Feature">Feature</a></code></span></h4>
+<h4 id='method.field' class="method"><span id='field.v' class='invisible'><code>fn <a href='#method.field' class='fnname'>field</a>(&amp;self, name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="enum" href="../../gdal/vector/enum.FieldValue.html" title="enum gdal::vector::FieldValue">FieldValue</a>&gt;</code></span></h4>
+<div class='docblock'><p>Get the value of a named field. If the field exists, it returns a <code>FieldValue</code> wrapper, that you need to unpack to a base type (string, float, etc). If the field is missing, returns <code>None</code>.</p></div><h4 id='method.geometry' class="method"><span id='geometry.v' class='invisible'><code>fn <a href='#method.geometry' class='fnname'>geometry</a>(&amp;self) -&gt; &amp;<a class="struct" href="../../gdal/vector/struct.Geometry.html" title="struct gdal::vector::Geometry">Geometry</a></code></span></h4>
+<div class='docblock'><p>Get the field&#39;s geometry.</p></div><h4 id='method.create' class="method"><span id='create.v' class='invisible'><code>fn <a href='#method.create' class='fnname'>create</a>(&amp;self, lyr: &amp;<a class="struct" href="../../gdal/vector/struct.Layer.html" title="struct gdal::vector::Layer">Layer</a>) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+<h4 id='method.set_field_string' class="method"><span id='set_field_string.v' class='invisible'><code>fn <a href='#method.set_field_string' class='fnname'>set_field_string</a>(&amp;self, field_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+<h4 id='method.set_field_double' class="method"><span id='set_field_double.v' class='invisible'><code>fn <a href='#method.set_field_double' class='fnname'>set_field_double</a>(&amp;self, field_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+<h4 id='method.set_field_integer' class="method"><span id='set_field_integer.v' class='invisible'><code>fn <a href='#method.set_field_integer' class='fnname'>set_field_integer</a>(&amp;self, field_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+<h4 id='method.set_field' class="method"><span id='set_field.v' class='invisible'><code>fn <a href='#method.set_field' class='fnname'>set_field</a>(&amp;self, field_name: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value: &amp;<a class="enum" href="../../gdal/vector/enum.FieldValue.html" title="enum gdal::vector::FieldValue">FieldValue</a>) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+<h4 id='method.set_geometry' class="method"><span id='set_geometry.v' class='invisible'><code>fn <a href='#method.set_geometry' class='fnname'>set_geometry</a>(&amp;mut self, geom: <a class="struct" href="../../gdal/vector/struct.Geometry.html" title="struct gdal::vector::Geometry">Geometry</a>) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html" title="trait core::ops::Drop">Drop</a> for <a class="struct" href="../../gdal/vector/struct.Feature.html" title="struct gdal::vector::Feature">Feature</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/gdal/vector/feature.rs.html#137-141' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>A method called when the value goes out of scope. <a href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop">Read more</a></p></div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "gdal";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

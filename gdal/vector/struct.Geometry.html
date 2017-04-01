@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Geometry` struct in crate `gdal`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Geometry">
+
+    <title>gdal::vector::Geometry - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>gdal</a>::<wbr><a href='index.html'>vector</a></p><script>window.sidebarCurrent = {name: 'Geometry', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>gdal</a>::<wbr><a href='index.html'>vector</a>::<wbr><a class="struct" href=''>Geometry</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/gdal/vector/geometry.rs.html#12-15' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Geometry { /* fields omitted */ }</pre><div class='docblock'><p>OGR Geometry</p></div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../gdal/vector/struct.Geometry.html" title="struct gdal::vector::Geometry">Geometry</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/gdal/vector/geometry.rs.html#18-210' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.lazy_feature_geometry' class="method"><span id='lazy_feature_geometry.v' class='invisible'><code>unsafe fn <a href='#method.lazy_feature_geometry' class='fnname'>lazy_feature_geometry</a>() -&gt; <a class="struct" href="../../gdal/vector/struct.Geometry.html" title="struct gdal::vector::Geometry">Geometry</a></code></span></h4>
+<h4 id='method.has_gdal_ptr' class="method"><span id='has_gdal_ptr.v' class='invisible'><code>fn <a href='#method.has_gdal_ptr' class='fnname'>has_gdal_ptr</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<h4 id='method.set_c_geometry' class="method"><span id='set_c_geometry.v' class='invisible'><code>unsafe fn <a href='#method.set_c_geometry' class='fnname'>set_c_geometry</a>(&amp;self, c_geometry: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*const </a><a class="enum" href="../../libc/enum.c_void.html" title="enum libc::c_void">c_void</a>)</code></span></h4>
+<h4 id='method.empty' class="method"><span id='empty.v' class='invisible'><code>fn <a href='#method.empty' class='fnname'>empty</a>(wkb_type: <a class="type" href="../../libc/type.c_int.html" title="type libc::c_int">c_int</a>) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="struct" href="../../gdal/vector/struct.Geometry.html" title="struct gdal::vector::Geometry">Geometry</a>&gt;</code></span></h4>
+<h4 id='method.from_wkt' class="method"><span id='from_wkt.v' class='invisible'><code>fn <a href='#method.from_wkt' class='fnname'>from_wkt</a>(wkt: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="struct" href="../../gdal/vector/struct.Geometry.html" title="struct gdal::vector::Geometry">Geometry</a>&gt;</code></span></h4>
+<div class='docblock'><p>Create a geometry by parsing a <a href="https://en.wikipedia.org/wiki/Well-known_text">WKT</a> string.</p></div><h4 id='method.bbox' class="method"><span id='bbox.v' class='invisible'><code>fn <a href='#method.bbox' class='fnname'>bbox</a>(w: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, s: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, e: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, n: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="struct" href="../../gdal/vector/struct.Geometry.html" title="struct gdal::vector::Geometry">Geometry</a>&gt;</code></span></h4>
+<div class='docblock'><p>Create a rectangular geometry from West, South, East and North values.</p></div><h4 id='method.json' class="method"><span id='json.v' class='invisible'><code>fn <a href='#method.json' class='fnname'>json</a>(&amp;self) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>&gt;</code></span></h4>
+<div class='docblock'><p>Serialize the geometry as JSON.</p></div><h4 id='method.wkt' class="method"><span id='wkt.v' class='invisible'><code>fn <a href='#method.wkt' class='fnname'>wkt</a>(&amp;self) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>&gt;</code></span></h4>
+<div class='docblock'><p>Serialize the geometry as WKT.</p></div><h4 id='method.c_geometry' class="method"><span id='c_geometry.v' class='invisible'><code>unsafe fn <a href='#method.c_geometry' class='fnname'>c_geometry</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*const </a><a class="enum" href="../../libc/enum.c_void.html" title="enum libc::c_void">c_void</a></code></span></h4>
+<h4 id='method.into_c_geometry' class="method"><span id='into_c_geometry.v' class='invisible'><code>unsafe fn <a href='#method.into_c_geometry' class='fnname'>into_c_geometry</a>(self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*const </a><a class="enum" href="../../libc/enum.c_void.html" title="enum libc::c_void">c_void</a></code></span></h4>
+<h4 id='method.set_point_2d' class="method"><span id='set_point_2d.v' class='invisible'><code>fn <a href='#method.set_point_2d' class='fnname'>set_point_2d</a>(&amp;mut self, i: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, p: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>)</code></span></h4>
+<h4 id='method.get_point' class="method"><span id='get_point.v' class='invisible'><code>fn <a href='#method.get_point' class='fnname'>get_point</a>(&amp;self, i: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<h4 id='method.get_point_vec' class="method"><span id='get_point_vec.v' class='invisible'><code>fn <a href='#method.get_point_vec' class='fnname'>get_point_vec</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html" title="struct collections::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;</code></span></h4>
+<h4 id='method.convex_hull' class="method"><span id='convex_hull.v' class='invisible'><code>fn <a href='#method.convex_hull' class='fnname'>convex_hull</a>(&amp;self) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="struct" href="../../gdal/vector/struct.Geometry.html" title="struct gdal::vector::Geometry">Geometry</a>&gt;</code></span></h4>
+<div class='docblock'><p>Compute the convex hull of this geometry.</p></div><h4 id='method._get_geometry' class="method"><span id='_get_geometry.v' class='invisible'><code>unsafe fn <a href='#method._get_geometry' class='fnname'>_get_geometry</a>(&amp;self, n: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="struct" href="../../gdal/vector/struct.Geometry.html" title="struct gdal::vector::Geometry">Geometry</a></code></span></h4>
+<h4 id='method.add_geometry' class="method"><span id='add_geometry.v' class='invisible'><code>fn <a href='#method.add_geometry' class='fnname'>add_geometry</a>(&amp;mut self, sub: <a class="struct" href="../../gdal/vector/struct.Geometry.html" title="struct gdal::vector::Geometry">Geometry</a>) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+<h4 id='method.transform_inplace' class="method"><span id='transform_inplace.v' class='invisible'><code>fn <a href='#method.transform_inplace' class='fnname'>transform_inplace</a>(&amp;self, htransform: &amp;<a class="struct" href="../../gdal/spatial_ref/struct.CoordTransform.html" title="struct gdal::spatial_ref::CoordTransform">CoordTransform</a>) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+<h4 id='method.transform' class="method"><span id='transform.v' class='invisible'><code>fn <a href='#method.transform' class='fnname'>transform</a>(&amp;self, htransform: &amp;<a class="struct" href="../../gdal/spatial_ref/struct.CoordTransform.html" title="struct gdal::spatial_ref::CoordTransform">CoordTransform</a>) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="struct" href="../../gdal/vector/struct.Geometry.html" title="struct gdal::vector::Geometry">Geometry</a>&gt;</code></span></h4>
+<h4 id='method.transform_to_inplace' class="method"><span id='transform_to_inplace.v' class='invisible'><code>fn <a href='#method.transform_to_inplace' class='fnname'>transform_to_inplace</a>(&amp;self, spatial_ref: &amp;<a class="struct" href="../../gdal/spatial_ref/struct.SpatialRef.html" title="struct gdal::spatial_ref::SpatialRef">SpatialRef</a>) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+<h4 id='method.transform_to' class="method"><span id='transform_to.v' class='invisible'><code>fn <a href='#method.transform_to' class='fnname'>transform_to</a>(&amp;self, spatial_ref: &amp;<a class="struct" href="../../gdal/spatial_ref/struct.SpatialRef.html" title="struct gdal::spatial_ref::SpatialRef">SpatialRef</a>) -&gt; <a class="type" href="../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="struct" href="../../gdal/vector/struct.Geometry.html" title="struct gdal::vector::Geometry">Geometry</a>&gt;</code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html" title="trait core::ops::Drop">Drop</a> for <a class="struct" href="../../gdal/vector/struct.Geometry.html" title="struct gdal::vector::Geometry">Geometry</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/gdal/vector/geometry.rs.html#212-219' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>A method called when the value goes out of scope. <a href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop">Read more</a></p></div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../gdal/vector/struct.Geometry.html" title="struct gdal::vector::Geometry">Geometry</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/gdal/vector/geometry.rs.html#221-228' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../gdal/vector/struct.Geometry.html" title="struct gdal::vector::Geometry">Geometry</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p></div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p></div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../geo/traits/trait.ToGeo.html" title="trait geo::traits::ToGeo">ToGeo</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>&gt; for <a class="struct" href="../../gdal/vector/struct.Geometry.html" title="struct gdal::vector::Geometry">Geometry</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/gdal/vector/gdal_to_geo.rs.html#5-80' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.to_geo' class="method"><span id='to_geo.v' class='invisible'><code>fn <a href='../../geo/traits/trait.ToGeo.html#tymethod.to_geo' class='fnname'>to_geo</a>(&amp;self) -&gt; <a class="enum" href="../../geo/types/enum.Geometry.html" title="enum geo::types::Geometry">Geometry</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>&gt;</code></span></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "gdal";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

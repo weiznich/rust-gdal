@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["OGRErr",""],["OGRFieldType",""]]});

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="Source to the Rust file `gdal-sys/src/gdal.rs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang">
+
+    <title>gdal.rs.html -- source</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc source">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content"><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
+<span id="62">62</span>
+<span id="63">63</span>
+<span id="64">64</span>
+<span id="65">65</span>
+<span id="66">66</span>
+<span id="67">67</span>
+<span id="68">68</span>
+<span id="69">69</span>
+<span id="70">70</span>
+<span id="71">71</span>
+<span id="72">72</span>
+<span id="73">73</span>
+<span id="74">74</span>
+<span id="75">75</span>
+<span id="76">76</span>
+<span id="77">77</span>
+<span id="78">78</span>
+</pre><pre class="rust ">
+<span class="kw">use</span> <span class="ident">libc</span>::{<span class="ident">c_int</span>, <span class="ident">c_char</span>, <span class="ident">c_double</span>, <span class="ident">c_void</span>};
+<span class="kw">use</span> <span class="ident">gdal_enums</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">cpl_error</span>::{<span class="ident">CPLErr</span>};
+
+<span class="kw">extern</span> {
+    <span class="comment">// driver</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALAllRegister</span>();
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALGetDriverByName</span>(<span class="ident">pszName</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALGetDriverShortName</span>(<span class="ident">hDriver</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALGetDriverLongName</span>(<span class="ident">hDriver</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALCreate</span>(
+            <span class="ident">hDriver</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>,
+            <span class="ident">pszFilename</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>,
+            <span class="ident">nXSize</span>: <span class="ident">c_int</span>,
+            <span class="ident">nYSize</span>: <span class="ident">c_int</span>,
+            <span class="ident">nBands</span>: <span class="ident">c_int</span>,
+            <span class="ident">eBandType</span>: <span class="ident">GDALDataType</span>,
+            <span class="ident">papszOptions</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>
+        ) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALCreateCopy</span>(
+            <span class="ident">hDriver</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>,
+            <span class="ident">pszFilename</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>,
+            <span class="ident">hSrcDS</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>,
+            <span class="ident">bStrict</span>: <span class="ident">c_int</span>,
+            <span class="ident">papszOptions</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>,
+            <span class="ident">pfnProgres</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>,
+            <span class="ident">pProgressData</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>
+        ) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALOpen</span>(<span class="ident">pszFilename</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>, <span class="ident">eAccess</span>: <span class="ident">GDALAccess</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>;
+    <span class="comment">// dataset</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALClose</span>(<span class="ident">hDS</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALGetDatasetDriver</span>(<span class="ident">hDataset</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALGetRasterXSize</span>(<span class="ident">hDataset</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>) <span class="op">-&gt;</span> <span class="ident">c_int</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALGetRasterYSize</span>(<span class="ident">hDataset</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>) <span class="op">-&gt;</span> <span class="ident">c_int</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALGetRasterCount</span>(<span class="ident">hDataset</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>) <span class="op">-&gt;</span> <span class="ident">c_int</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALGetProjectionRef</span>(<span class="ident">hDataset</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALSetProjection</span>(<span class="ident">hDataset</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>, <span class="ident">pszProjection</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>) <span class="op">-&gt;</span> <span class="ident">c_int</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALSetGeoTransform</span>(<span class="ident">hDataset</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>, <span class="ident">padfTransform</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">CPLErr</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALGetGeoTransform</span>(<span class="ident">hDataset</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>, <span class="ident">padfTransform</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">CPLErr</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALGetRasterBand</span>(<span class="ident">hDataset</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>, <span class="ident">nBandId</span>: <span class="ident">c_int</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>;
+    <span class="comment">// band</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALGetRasterDataType</span>(<span class="ident">hBand</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>) <span class="op">-&gt;</span> <span class="ident">c_int</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALGetRasterNoDataValue</span>(<span class="ident">hBand</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>, <span class="ident">pbSuccess</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_int</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALGetRasterOffset</span>(<span class="ident">hBand</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>, <span class="ident">pbSuccess</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_int</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALGetRasterScale</span>(<span class="ident">hBand</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>, <span class="ident">pbSuccess</span>: <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">c_int</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALRasterIO</span>(
+            <span class="ident">hBand</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>,
+            <span class="ident">eRWFlag</span>: <span class="ident">GDALRWFlag</span>,
+            <span class="ident">nXOff</span>: <span class="ident">c_int</span>,
+            <span class="ident">nYOff</span>: <span class="ident">c_int</span>,
+            <span class="ident">nXSize</span>: <span class="ident">c_int</span>,
+            <span class="ident">nYSize</span>: <span class="ident">c_int</span>,
+            <span class="ident">pData</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>,
+            <span class="ident">nBufXSize</span>: <span class="ident">c_int</span>,
+            <span class="ident">nBufYSize</span>: <span class="ident">c_int</span>,
+            <span class="ident">GDALDataType</span>: <span class="ident">GDALDataType</span>,
+            <span class="ident">nPixelSpace</span>: <span class="ident">c_int</span>,
+            <span class="ident">nLineSpace</span>: <span class="ident">c_int</span>
+        ) <span class="op">-&gt;</span> <span class="ident">CPLErr</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALReprojectImage</span>(
+        <span class="ident">hSrcDS</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>,
+        <span class="ident">pszSrcWKT</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>,
+        <span class="ident">hDstDS</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>,
+        <span class="ident">pszDstWKT</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>,
+        <span class="ident">eResampleAlg</span>: <span class="ident">GDALResampleAlg</span>,
+        <span class="ident">dfWarpMemoryLimit</span>: <span class="ident">c_double</span>,
+        <span class="ident">dfMaxError</span>: <span class="ident">c_double</span>,
+        <span class="ident">pfnProgress</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>,
+        <span class="ident">pProgressArg</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>,
+        <span class="ident">psOptions</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>
+    ) <span class="op">-&gt;</span> <span class="ident">CPLErr</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALGetDescription</span>(<span class="ident">hGdalMayorObject</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALGetMetadataItem</span>(<span class="ident">hGdalMayorObject</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>, <span class="ident">pszName</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>, <span class="ident">pszDomain</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALSetMetadataItem</span>(<span class="ident">hGdalMayorObject</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_void</span>, <span class="ident">pszName</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>, <span class="ident">pszValue</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>, <span class="ident">pszDomain</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span> ) <span class="op">-&gt;</span> <span class="ident">CPLErr</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">GDALVersionInfo</span>(<span class="ident">key</span>: <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>) <span class="op">-&gt;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>;
+}
+
+<span class="kw">pub</span> <span class="kw">static</span> <span class="ident">REPROJECT_MEMORY_LIMIT</span>: <span class="ident">c_double</span> <span class="op">=</span> <span class="number">0.0</span>;
+</pre>
+</section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "gdal_sys";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

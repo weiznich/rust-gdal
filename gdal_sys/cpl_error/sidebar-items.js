@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["CPLErr",""]],"fn":[["CPLErrorReset","Erase any traces of previous errors."],["CPLGetLastErrorMsg","Get the last error message."],["CPLGetLastErrorNo","Fetch the last error number."],["CPLGetLastErrorType","Fetch the last error type."]]});

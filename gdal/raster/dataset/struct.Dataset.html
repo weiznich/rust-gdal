@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Dataset` struct in crate `gdal`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Dataset">
+
+    <title>gdal::raster::dataset::Dataset - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>gdal</a>::<wbr><a href='../index.html'>raster</a>::<wbr><a href='index.html'>dataset</a></p><script>window.sidebarCurrent = {name: 'Dataset', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>gdal</a>::<wbr><a href='../index.html'>raster</a>::<wbr><a href='index.html'>dataset</a>::<wbr><a class="struct" href=''>Dataset</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/gdal/raster/dataset.rs.html#17-19' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Dataset { /* fields omitted */ }</pre><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../../gdal/raster/dataset/struct.Dataset.html" title="struct gdal::raster::dataset::Dataset">Dataset</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/gdal/raster/dataset.rs.html#36-212' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.open' class="method"><span id='open.v' class='invisible'><code>fn <a href='#method.open' class='fnname'>open</a>(path: &amp;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html" title="struct std::path::Path">Path</a>) -&gt; <a class="type" href="../../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="struct" href="../../../gdal/raster/dataset/struct.Dataset.html" title="struct gdal::raster::dataset::Dataset">Dataset</a>&gt;</code></span></h4>
+<h4 id='method._with_c_ptr' class="method"><span id='_with_c_ptr.v' class='invisible'><code>unsafe fn <a href='#method._with_c_ptr' class='fnname'>_with_c_ptr</a>(c_dataset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*const </a><a class="enum" href="../../../libc/enum.c_void.html" title="enum libc::c_void">c_void</a>) -&gt; <a class="struct" href="../../../gdal/raster/dataset/struct.Dataset.html" title="struct gdal::raster::dataset::Dataset">Dataset</a></code></span></h4>
+<h4 id='method._c_ptr' class="method"><span id='_c_ptr.v' class='invisible'><code>unsafe fn <a href='#method._c_ptr' class='fnname'>_c_ptr</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*const </a><a class="enum" href="../../../libc/enum.c_void.html" title="enum libc::c_void">c_void</a></code></span></h4>
+<h4 id='method.rasterband' class="method"><span id='rasterband.v' class='invisible'><code>fn <a href='#method.rasterband' class='fnname'>rasterband</a>&lt;'a&gt;(&amp;'a self, band_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>) -&gt; <a class="type" href="../../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="struct" href="../../../gdal/raster/rasterband/struct.RasterBand.html" title="struct gdal::raster::rasterband::RasterBand">RasterBand</a>&lt;'a&gt;&gt;</code></span></h4>
+<h4 id='method.size' class="method"><span id='size.v' class='invisible'><code>fn <a href='#method.size' class='fnname'>size</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<h4 id='method.driver' class="method"><span id='driver.v' class='invisible'><code>fn <a href='#method.driver' class='fnname'>driver</a>(&amp;self) -&gt; <a class="struct" href="../../../gdal/raster/driver/struct.Driver.html" title="struct gdal::raster::driver::Driver">Driver</a></code></span></h4>
+<h4 id='method.count' class="method"><span id='count.v' class='invisible'><code>fn <a href='#method.count' class='fnname'>count</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a></code></span></h4>
+<h4 id='method.projection' class="method"><span id='projection.v' class='invisible'><code>fn <a href='#method.projection' class='fnname'>projection</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a></code></span></h4>
+<h4 id='method.set_projection' class="method"><span id='set_projection.v' class='invisible'><code>fn <a href='#method.set_projection' class='fnname'>set_projection</a>(&amp;self, projection: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="type" href="../../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+<h4 id='method.set_geo_transform' class="method"><span id='set_geo_transform.v' class='invisible'><code>fn <a href='#method.set_geo_transform' class='fnname'>set_geo_transform</a>(&amp;self, tr: &amp;<a class="type" href="../../../gdal/raster/dataset/type.GeoTransform.html" title="type gdal::raster::dataset::GeoTransform">GeoTransform</a>) -&gt; <a class="type" href="../../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+<h4 id='method.geo_transform' class="method"><span id='geo_transform.v' class='invisible'><code>fn <a href='#method.geo_transform' class='fnname'>geo_transform</a>(&amp;self) -&gt; <a class="type" href="../../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="type" href="../../../gdal/raster/dataset/type.GeoTransform.html" title="type gdal::raster::dataset::GeoTransform">GeoTransform</a>&gt;</code></span></h4>
+<h4 id='method.create_copy' class="method"><span id='create_copy.v' class='invisible'><code>fn <a href='#method.create_copy' class='fnname'>create_copy</a>(&amp;self, driver: <a class="struct" href="../../../gdal/raster/driver/struct.Driver.html" title="struct gdal::raster::driver::Driver">Driver</a>, filename: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="type" href="../../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="struct" href="../../../gdal/raster/dataset/struct.Dataset.html" title="struct gdal::raster::dataset::Dataset">Dataset</a>&gt;</code></span></h4>
+<h4 id='method.band_type' class="method"><span id='band_type.v' class='invisible'><code>fn <a href='#method.band_type' class='fnname'>band_type</a>(&amp;self, band_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>) -&gt; <a class="type" href="../../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="enum" href="../../../gdal/raster/gdal_enums/enum.GDALDataType.html" title="enum gdal::raster::gdal_enums::GDALDataType">GDALDataType</a>&gt;</code></span></h4>
+<h4 id='method.read_raster' class="method"><span id='read_raster.v' class='invisible'><code>fn <a href='#method.read_raster' class='fnname'>read_raster</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; band_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; window: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; window_size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="type" href="../../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="type" href="../../../gdal/raster/dataset/type.ByteBuffer.html" title="type gdal::raster::dataset::ByteBuffer">ByteBuffer</a>&gt;</code></span></h4>
+<div class='docblock'><p>Read a &#39;Buffer<u8>&#39; from a &#39;Dataset&#39;.</p><h1 id="arguments" class="section-header"><a href="#arguments">Arguments</a></h1><ul><li>band_index - the band_index</li><li>window - the window position from top left</li><li>window_size - the window size (GDAL will interpolate data if window_size != buffer_size)</li><li>buffer_size - the desired size of the &#39;Buffer&#39;</li></ul></div><h4 id='method.read_full_raster_as' class="method"><span id='read_full_raster_as.v' class='invisible'><code>fn <a href='#method.read_full_raster_as' class='fnname'>read_full_raster_as</a>&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + GdalType&gt;(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; band_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="type" href="../../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="struct" href="../../../gdal/raster/dataset/struct.Buffer.html" title="struct gdal::raster::dataset::Buffer">Buffer</a>&lt;T&gt;&gt;</code></span></h4>
+<div class='docblock'><p>Read a full &#39;Dataset&#39; as &#39;Buffer<T>&#39;.</p><h1 id="arguments-1" class="section-header"><a href="#arguments-1">Arguments</a></h1><ul><li>band_index - the band_index</li></ul></div><h4 id='method.read_raster_as' class="method"><span id='read_raster_as.v' class='invisible'><code>fn <a href='#method.read_raster_as' class='fnname'>read_raster_as</a>&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + GdalType&gt;(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; band_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; window: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; window_size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="type" href="../../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="struct" href="../../../gdal/raster/dataset/struct.Buffer.html" title="struct gdal::raster::dataset::Buffer">Buffer</a>&lt;T&gt;&gt;</code></span></h4>
+<div class='docblock'><p>Read a &#39;Buffer<T>&#39; from a &#39;Dataset&#39;. T implements &#39;GdalType&#39;</p><h1 id="arguments-2" class="section-header"><a href="#arguments-2">Arguments</a></h1><ul><li>band_index - the band_index</li><li>window - the window position from top left</li><li>window_size - the window size (GDAL will interpolate data if window_size != buffer_size)</li><li>buffer_size - the desired size of the &#39;Buffer&#39;</li></ul></div><h4 id='method.write_raster' class="method"><span id='write_raster.v' class='invisible'><code>fn <a href='#method.write_raster' class='fnname'>write_raster</a>&lt;T:&nbsp;GdalType + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a>&gt;(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; band_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; window: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; window_size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buffer: <a class="struct" href="../../../gdal/raster/dataset/struct.Buffer.html" title="struct gdal::raster::dataset::Buffer">Buffer</a>&lt;T&gt;)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="type" href="../../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+<div class='docblock'><p>Write a &#39;Buffer<T>&#39; into a &#39;Dataset&#39;.</p><h1 id="arguments-3" class="section-header"><a href="#arguments-3">Arguments</a></h1><ul><li>band_index - the band_index</li><li>window - the window position from top left</li><li>window_size - the window size (GDAL will interpolate data if window_size != Buffer.size)</li></ul></div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../../gdal/metadata/trait.Metadata.html" title="trait gdal::metadata::Metadata">Metadata</a> for <a class="struct" href="../../../gdal/raster/dataset/struct.Dataset.html" title="struct gdal::raster::dataset::Dataset">Dataset</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/gdal/raster/dataset.rs.html#27' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.description' class="method"><span id='description.v' class='invisible'><code>fn <a href='../../../gdal/metadata/trait.Metadata.html#method.description' class='fnname'>description</a>(&amp;self) -&gt; <a class="type" href="../../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>&gt;</code></span></h4>
+<h4 id='method.metadata_item' class="method"><span id='metadata_item.v' class='invisible'><code>fn <a href='../../../gdal/metadata/trait.Metadata.html#method.metadata_item' class='fnname'>metadata_item</a>(&amp;self, key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, domain: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>&gt;</code></span></h4>
+<h4 id='method.set_metadata_item' class="method"><span id='set_metadata_item.v' class='invisible'><code>fn <a href='../../../gdal/metadata/trait.Metadata.html#method.set_metadata_item' class='fnname'>set_metadata_item</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; key: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; value: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; domain: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="type" href="../../../gdal/errors/type.Result.html" title="type gdal::errors::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+</div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html" title="trait core::ops::Drop">Drop</a> for <a class="struct" href="../../../gdal/raster/dataset/struct.Dataset.html" title="struct gdal::raster::dataset::Dataset">Dataset</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/gdal/raster/dataset.rs.html#29-33' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>A method called when the value goes out of scope. <a href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop">Read more</a></p></div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "gdal";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>
