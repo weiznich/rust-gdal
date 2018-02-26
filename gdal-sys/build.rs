@@ -1,26 +1,31 @@
-
+use std::env;
 
 fn main() {
 
-    let link_type = "dylib";
     let lib_name = "gdal";
-    
+    let link_type = if env::var_os("GDAL_LIB_STATIC").is_some() {
+        "static"
+    } else {
+        "dylib"
+    };
+    println!("cargo:rerun-if-env-changed=GDAL_LIB_STATIC");
+    println!("cargo:rerun-if-env-changed=GDAL_HOME");
+
     #[cfg(windows)]
     {
         use std::path::Path;
-        use std::env;
 
         // get the path to GDAL_HOME
         let home_path = env::var("GDAL_HOME").expect("Environment variable $GDAL_HOME not found!");
-        
+
         // detect the path to gdal_i.lib (works for MSVC and GNU)
         let lib_suffix = "_i";
         let lib_search_path = Path::new(&home_path).join("lib");
         let lib_path = lib_search_path.join(&format!("{}{}.lib", lib_name, lib_suffix));
-        
+
         if lib_search_path.exists() && lib_path.exists() {
             println!("cargo:rustc-link-search={}", lib_search_path.to_string_lossy());
-            println!("cargo:rustc-link-lib={}={}", link_type, format!("{}{}",lib_name, lib_suffix));            
+            println!("cargo:rustc-link-lib={}={}", link_type, format!("{}{}",lib_name, lib_suffix));
         } else {
 
             #[cfg(target_env="msvc")]
@@ -41,11 +46,14 @@ fn main() {
                     panic!("windows-gnu requires either gdal_i.lib in $GDAL_HOME\\lib OR gdal{version}.dll in $GDAL_HOME\\bin.");
                 }
             }
-        }             
+        }
     }
 
     #[cfg(unix)]
     {
+        if let Ok(home) = env::var("GDAL_HOME") {
+            println!("cargo:rustc-link-search={}", home);
+        }
         println!("cargo:rustc-link-lib={}={}", link_type, lib_name);
     }
 }
